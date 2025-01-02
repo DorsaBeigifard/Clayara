@@ -1,1 +1,1 @@
-# Clayara
+# shopping-cart-js

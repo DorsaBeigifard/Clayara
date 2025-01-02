@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Quicksand";
+  src: url("/assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf");
+}
+
+body {
+  font-family: "Quicksand";
+}
+
+@font-face {
+  font-family: "Gloock";
+  src: url("/assets/fonts/Gloock/Gloock-Regular.ttf");
+}
+
+h1,
+.cart h3 {
+  font-family: "Gloock";
+}

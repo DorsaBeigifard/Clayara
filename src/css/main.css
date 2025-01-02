@@ -1,0 +1,47 @@
+:root {
+  --primary-color: #fad01d;
+  --secondary-color: #8fd1fd;
+  --tertiary-color: #e89bf5;
+  --heading-font: "Gloock";
+
+  --spacing: 2rem;
+}
+
+/* -----------------Hero Section-------------------- */
+.header {
+  background-image: url("../../assets/images/Group\ 53@1x.png");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: top right var(--spacing);
+  z-index: 1;
+  margin-top: 0;
+}
+.headline {
+  font-size: 8rem;
+  line-height: 1.2;
+
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.headline span {
+  font-size: 6rem;
+  color: black;
+}
+
+h1 + p {
+  font-family: "Gloock";
+  font-size: 3rem;
+  margin-bottom: var(--spacing);
+}
+
+.headline .hero__image img {
+  width: 100%;
+}
+
+.hero__btns {
+  margin-top: var(--spacing);
+  gap: var(--spacing);
+}
+
+/* --------- */

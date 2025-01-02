@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clayara - Shop</title>
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="src/css/flexboxgrid.css" />
+    <link rel="stylesheet" href="src/css/shop.css" />
+    <link rel="stylesheet" href="src/css/fonts.css" />
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="src/css/fontawesome/brands.css" />
+    <link rel="stylesheet" href="src/css/fontawesome/fontawesome.css" />
+    <link rel="stylesheet" href="src/css/fontawesome/regular.css" />
+    <link rel="stylesheet" href="src/css/fontawesome/solid.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__content d-flex between-lg middle-lg">
+          <div class="header__logo"></div>
+          <nav class="header__navigation">
+            <ul class="header__menu">
+              <li class="menu__item">
+                <a href="index.html" class="heacart-totader__menu-link">Home</a>
+              </li>
+              <li class="menu__item">
+                <a href="shop.html" class="header__menu-link">Shop</a>
+              </li>
+              <li class="menu__item">
+                <a href="about.html" class="header__menu-link">About</a>
+              </li>
+              <li class="menu__item">
+                <a href="custom-orders.html" class="header__menu-link"
+                  >Custom Orders</a
+                >
+              </li>
+              <li class="menu__item">
+                <a href="contact.html" class="header__menu-link">Contact</a>
+              </li>
+              <li class="menu__item cart-btn">
+                <!-- This will be like a   modal opening up -->
+                <div class="cart-items">0</div>
+                <i class="fa-solid fa-cart-shopping"></i>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <div class="main__content section-padding row cl">
+          <aside class="filter-products col-lg-3">
+            <form action="" method="get">
+              <fieldset>
+                <legend>Filter By</legend>
+
+                <!-- Category Section -->
+                <div class="filter-group">
+                  <h3>Category</h3>
+                  <label
+                    ><input type="checkbox" name="category" value="mugs" />
+                    Mugs</label
+                  >
+                  <label
+                    ><input type="checkbox" name="category" value="bowls" />
+                    Bowls</label
+                  >
+                  <label
+                    ><input type="checkbox" name="category" value="plates" />
+                    Plates</label
+                  >
+                  <label
+                    ><input type="checkbox" name="category" value="vases" />
+                    Vases</label
+                  >
+                  <label
+                    ><input type="checkbox" name="category" value="decor" />
+                    Decor</label
+                  >
+                </div>
+
+                <!-- Finish Section -->
+                <div class="filter-group">
+                  <h3>Finish</h3>
+                  <label
+                    ><input type="checkbox" name="finish" value="glossy" />
+                    Glossy</label
+                  >
+                  <label
+                    ><input type="checkbox" name="finish" value="matte" />
+                    Matte</label
+                  >
+                  <label
+                    ><input type="checkbox" name="finish" value="textured" />
+                    Textured</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="finish"
+                      value="hand-painted"
+                    />
+                    Hand-Painted</label
+                  >
+                </div>
+
+                <!-- Collections Section -->
+                <div class="filter-group">
+                  <h3>Collections</h3>
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="collections"
+                      value="seasonal"
+                    />
+                    Seasonal</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="collections"
+                      value="limited-edition"
+                    />
+                    Limited Edition</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="collections"
+                      value="best-sellers"
+                    />
+                    Best Sellers</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="collections"
+                      value="new-arrivals"
+                    />
+                    New Arrivals</label
+                  >
+                </div>
+
+                <!-- Sort Options Section -->
+                <div class="filter-group">
+                  <h3 class="sort-options">Sort by:</h3>
+                  <label
+                    ><input type="radio" name="sort" value="price-low-high" />
+                    Price (Low to High)</label
+                  >
+                  <label
+                    ><input type="radio" name="sort" value="price-high-low" />
+                    Price (High to Low)</label
+                  >
+                </div>
+              </fieldset>
+            </form>
+          </aside>
+
+          <section class="products col-lg-9">
+            <div class="page-title">
+              <h1>Shop</h1>
+              <p>There are <span class="products-number">9</span> products.</p>
+            </div>
+
+            <div class="products__list">
+              <!-- Display product here -->
+
+              <!-- <div class="product">
+                <div class="product__image">
+                  <img src="assets/images/products/cup.jpeg" alt="" />
+                  <div class="tags">
+                    <p class="tags__new">New</p>
+                  </div>
+                </div>
+                <div class="product__details">
+                  <h2>Eleanor Mug</h2>
+                  <h3>Mug</h3>
+                  <div class="price-details d-flex between-lg middle-lg">
+                    <p class="price">$34.00</p>
+                    <button href="#" class="btn btn__outline add-btn">Add to cart</button>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- CART MODAL -->
+
+    <section class="cart-center">
+      <div class="backdrop"></div>
+      <div class="cart column between-lg">
+        <h3 class="cart__title">Your Cart</h3>
+        <div class="cart__content">
+          <!-- <div class="cart__item d-flex between-lg middle-lg">
+            <div class="item__details d-flex middle-lg">
+              <img
+                src="assets/images/products/pot.jpeg"
+                alt="item"
+                class="cart__item-img"
+              />
+              <div class="cart__item-description">
+                <h4>Product Title</h4>
+                <h5>$34.00</h5>
+              </div>
+            </div>
+
+            <div class="item__controller d-flex middle-lg">
+              <div class="item__amount d-flex column middle-lg">
+                <i class="fa-solid fa-chevron-up"></i>
+                <p>1</p>
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+
+            <div class="item__delete">
+              <i class="fa-solid fa-trash"></i>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="cart__footer d-flex between-lg middle-lg">
+          <div class="cart-price d-flex middle-lg">
+            <span>Total Price: </span>
+            <span class="bold cart-total"> $90 </span>
+          </div>
+
+          <div class="footer__btns d-flex between-lg middle-lg">
+            <button class="btn cart-item-confirm btn__blue">Confirm</button>
+            <button class="btn clear-cart btn__outline">Clear Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="src/js/shopping-cart.js"></script>
+  </body>
+</html>

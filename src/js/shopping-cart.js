@@ -4,19 +4,21 @@ const cartBtn = document.querySelector(".cart-btn");
 const cartModal = document.querySelector(".cart");
 const backDrop = document.querySelector(".backdrop");
 const closeModal = document.querySelector(".cart-item-confirm");
-const ptoductsList = document.querySelector(".products__list");
+const productsList = document.querySelector(".products__list");
 const cartTotal = document.querySelector(".cart-total");
 const cartItems = document.querySelector(".cart-items");
 const cartContent = document.querySelector(".cart__content");
 const clearCart = document.querySelector(".clear-cart");
+const searchInput = document.querySelector("#search");
 
 // import { productsData } from "./products.js";
-
+//* Global variables
 let cart = [];
 let buttonsDOM = [];
-
-//1- get products
-//* you can either import it or get it from api end points - from backend
+const filters = {
+  searchItems: "",
+};
+//* 1- fetch products
 
 // class Products {
 //   getProducts() {
@@ -28,24 +30,33 @@ class Products {
   async getProducts() {
     try {
       const response = await axios.get("http://localhost:3000/products");
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error("Error fetching products:", error);
-      return []; // Return an empty array in case of an error
     }
   }
 }
 
-//2- display products
+//* 2- display
+/* *This class handles displaying products, cart interactions, and updating the UI. */
 class UI {
-  displayProducts(products) {
-    //display new ones first!
+  displayProducts(products, filter = filters.searchItems) {
+    //display newest first!
     const sortedProducts = products.sort((a, b) => b.isNew - a.isNew);
 
-    let result = "";
-    products.forEach((item) => {
-      result += `<div class="product">
-                <div class="product__image">
+    //! Filter products
+    const filteredProducts = products.filter((item) => {
+      return item.title.toLowerCase().includes(filter.toLowerCase());
+    });
+
+    //Create product in DOM
+    // ! render products with filter
+    productsList.innerHTML = "";
+    filteredProducts.forEach((item) => {
+      const productsDiv = document.createElement("div");
+      productsDiv.classList.add("product");
+      productsDiv.innerHTML = `<div class="product__image">
                   <img src="${item.imageUrl}" alt="" />
                   <div class="tags">
                   ${item.isNew ? `<p class="tags__new">New</p>` : ""}
@@ -60,21 +71,19 @@ class UI {
                       item.id
                     }>Add to cart</button>
                   </div>
-                </div>
-              </div>`;
+                </div>`;
+      productsList.appendChild(productsDiv);
     });
-
-    ptoductsList.innerHTML = result;
   }
 
+  // Enable the “Add to Cart” button functionality.
   getAddToCartBtns() {
-    const addToCartBtns = [...document.querySelectorAll(".add-btn")]; //node list to array
+    const addToCartBtns = [...document.querySelectorAll(".add-btn")]; //node list to array - select buttons
 
     buttonsDOM = addToCartBtns;
+    // Check If a Product Is Already in the Cart
     addToCartBtns.forEach((btn) => {
-      const id = btn.dataset.id;
-
-      // is the product in the cart ?
+      const id = btn.dataset.id; // data-id attribute
       const isInCart = cart.find((item) => item.id === parseInt(id));
       if (isInCart) {
         btn.innerText = "Added";
@@ -284,6 +293,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     ui.getAddToCartBtns();
     // Save fetched products to local storage
     Storage.saveProducts(productData);
+
+    // display products while being searched
+    searchInput.addEventListener("input", (e) => {
+      filters.searchItems = e.target.value;
+      ui.displayProducts(productData, filters.searchItems);
+    });
   } catch (error) {
     console.error("Error initializing app:", error);
   }

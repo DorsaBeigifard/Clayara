@@ -1,18 +1,16 @@
+// * Variables
+
 const cartBtn = document.querySelector(".cart-btn");
 const cartModal = document.querySelector(".cart");
 const backDrop = document.querySelector(".backdrop");
 const closeModal = document.querySelector(".cart-item-confirm");
-
 const ptoductsList = document.querySelector(".products__list");
-
 const cartTotal = document.querySelector(".cart-total");
 const cartItems = document.querySelector(".cart-items");
-
 const cartContent = document.querySelector(".cart__content");
-
 const clearCart = document.querySelector(".clear-cart");
 
-import { productsData } from "./products.js";
+// import { productsData } from "./products.js";
 
 let cart = [];
 let buttonsDOM = [];
@@ -20,9 +18,21 @@ let buttonsDOM = [];
 //1- get products
 //* you can either import it or get it from api end points - from backend
 
+// class Products {
+//   getProducts() {
+//     return productsData;
+//   }
+// }
+
 class Products {
-  getProducts() {
-    return productsData;
+  async getProducts() {
+    try {
+      const response = await axios.get("http://localhost:3000/products");
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return []; // Return an empty array in case of an error
+    }
   }
 }
 
@@ -244,19 +254,39 @@ class Storage {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
+//   // to get products when refreshing
+//   const products = new Products();
+//   const productData = products.getProducts();
+//   // to show products when refreshing
+//   const ui = new UI();
+//   ui.displayProducts(productData);
+//   //get cart and set up application when relaoding :
+//   ui.setUp();
+//   ui.cartLogic();
+//   ui.getAddToCartBtns();
+//   //   save the products
+//   Storage.saveProducts(productData);
+// });
+
+document.addEventListener("DOMContentLoaded", async () => {
   // to get products when refreshing
   const products = new Products();
-  const productData = products.getProducts();
-  // to show products when refreshing
-  const ui = new UI();
-  ui.displayProducts(productData);
-  //get cart and set up application when relaoding :
-  ui.setUp();
-  ui.cartLogic();
-  ui.getAddToCartBtns();
-  //   save the products
-  Storage.saveProducts(productData);
+
+  try {
+    const productData = await products.getProducts();
+    // Display fetched products
+    const ui = new UI();
+    ui.displayProducts(productData);
+    //get cart and set up application when relaoding :
+    ui.setUp();
+    ui.cartLogic();
+    ui.getAddToCartBtns();
+    // Save fetched products to local storage
+    Storage.saveProducts(productData);
+  } catch (error) {
+    console.error("Error initializing app:", error);
+  }
 });
 
 // For modal

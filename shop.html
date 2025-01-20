@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="src/css/fontawesome/fontawesome.css" />
     <link rel="stylesheet" href="src/css/fontawesome/regular.css" />
     <link rel="stylesheet" href="src/css/fontawesome/solid.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
   </head>
   <body>
     <header class="header">
@@ -61,23 +63,48 @@
                 <div class="filter-group">
                   <h3>Category</h3>
                   <label
-                    ><input type="checkbox" name="category" value="mugs" />
+                    ><input
+                      type="checkbox"
+                      name="category"
+                      value="mugs"
+                      data-filter
+                    />
                     Mugs</label
                   >
                   <label
-                    ><input type="checkbox" name="category" value="bowls" />
+                    ><input
+                      type="checkbox"
+                      name="category"
+                      value="bowls"
+                      data-filter
+                    />
                     Bowls</label
                   >
                   <label
-                    ><input type="checkbox" name="category" value="plates" />
+                    ><input
+                      type="checkbox"
+                      name="category"
+                      value="plates"
+                      data-filter
+                    />
                     Plates</label
                   >
                   <label
-                    ><input type="checkbox" name="category" value="vases" />
+                    ><input
+                      type="checkbox"
+                      name="category"
+                      value="vases"
+                      data-filter
+                    />
                     Vases</label
                   >
                   <label
-                    ><input type="checkbox" name="category" value="decor" />
+                    ><input
+                      type="checkbox"
+                      name="category"
+                      value="decor"
+                      data-filter
+                    />
                     Decor</label
                   >
                 </div>
@@ -161,9 +188,24 @@
           </aside>
 
           <section class="products col-lg-9">
-            <div class="page-title">
-              <h1>Shop</h1>
-              <p>There are <span class="products-number">9</span> products.</p>
+            <div class="section-header d-flex between-lg middle-lg">
+              <div class="page-title">
+                <h1>Shop</h1>
+                <p>
+                  There are <span class="products-number">9</span> products.
+                </p>
+              </div>
+              <div class="search">
+                <input
+                  type="text"
+                  placeholder="Search.."
+                  class="search-bar"
+                  id="search"
+                />
+                <button type="submit" class="search-btn">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
             </div>
 
             <div class="products__list">
